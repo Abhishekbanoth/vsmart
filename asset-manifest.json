@@ -1,0 +1,16 @@
+{
+  "files": {
+    "main.css": "/vsmart/static/css/main.f855e6bc.css",
+    "main.js": "/vsmart/static/js/main.a34e3ce2.js",
+    "static/js/453.dffa9cf8.chunk.js": "/vsmart/static/js/453.dffa9cf8.chunk.js",
+    "static/media/logo.png": "/vsmart/static/media/logo.987507c146764b0ddcd3.png",
+    "index.html": "/vsmart/index.html",
+    "main.f855e6bc.css.map": "/vsmart/static/css/main.f855e6bc.css.map",
+    "main.a34e3ce2.js.map": "/vsmart/static/js/main.a34e3ce2.js.map",
+    "453.dffa9cf8.chunk.js.map": "/vsmart/static/js/453.dffa9cf8.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.f855e6bc.css",
+    "static/js/main.a34e3ce2.js"
+  ]
+}
