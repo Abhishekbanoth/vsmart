@@ -16,29 +16,24 @@ const SizeSidebar = ({ onModuleClick }) => {
 
 const styles = {
     sidebar: {
-        position: 'absolute',
-        top: '70px',
-        left: '0px',
-        width: '300px',
-        backgroundColor: '#f9f9f9',
-        border: '1px solid #dcdcdc',
-        borderRadius: '5px',
-        boxShadow: '0 4px 8px rgba(0, 0, 0, 0.2)',
-        padding: '10px',
-        overflowY: 'auto',
-        maxHeight: '500px', // Set a max height for scrolling
-        listStyleType: 'none', // Remove bullets
-        margin: 0, // Remove default margin
-        marginTop: "60px",
-        marginLeft: "0",
-        borderBottom: '2px solid #ddd',
+        position: 'fixed',
+        top: '100px',
+        left: '0',
+        width: '20vw',
+        backgroundColor: '#f5f5f5',
+        borderRadius: '0 10px 10px 0',
+        boxShadow: 'rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset',
+        padding: '10px 0',
+        zIndex: 5,
+        marginTop: "30px",
     },
     sidebarItem: {
-        padding: '8px 12px',
+        padding: '10px',
+        textAlign: 'center',
+        backgroundColor: '#fff',
+        color: '#333',
+        borderBottom: '1px solid #e0e0e0',
         cursor: 'pointer',
-        display: 'flex',
-        flexDirection: 'column',
-        alignItems: 'center',
     },
 };
 

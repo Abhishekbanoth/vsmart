@@ -17,24 +17,25 @@ const Size = () => {
     // Dynamic styles based on selected module
     const moduleStyles = {
         module2: {
-            main: { height: '330px', width: '260px' },
-            inner: { height: '180px', width: '200px' },
+            main: { height: '41vh', width: '23vw' },
+            inner: { height: '146px', width: '140px' },
         },
         module4: {
-            main: { height: '360px', width: '500px' },
-            inner: { height: '200px', width: '300px' },
+            main: { height: '41vh', width: '33vw' },
+            inner: { height: '146px', width: '280px' },
         },
         module6: {
-            main: { height: '360px', width: '800px' },
-            inner: { height: '200px', width: '600px' },
+            main: { height: '41vh', width: '49vw' },
+            inner: { height: '146px', width: ' 432px' },
         },
         module8: {
-            main: { height: '360px', width: '1100px' },
-            inner: { height: '240px', width: '800px' },
+            main: { height: '41vh', width: '58vw' },
+            inner: { height: '146px', width: '565px' },
         },
         module12: {
-            main: { height: '720px', width: '800px' },
-            inner: { height: '200px', width: '600px' },
+            main: { height: '69.99vh', width: '49.384vw' },
+            inner: { height: '146px', width: '432px' },
+            innermost: { height: '146px', width: '432px' },
         },
     };
 
@@ -55,6 +56,8 @@ const Size = () => {
             flexDirection: 'column',
             justifyContent: 'center',
             alignItems: 'center',
+            top: '35 %',
+            left: '50 %',
         },
         module2InnerContainer: {
             border: 'solid 1px rgb(255, 255, 255)',
@@ -119,6 +122,7 @@ const Size = () => {
                 <div style={styles.module2Container}>
                     <div style={{ ...styles.module2MainContainer, ...moduleStyles[selectedModule].main }}>
                         <div style={{ ...styles.module2InnerContainer, ...moduleStyles[selectedModule].inner }}></div>
+                        <div style={{ ...styles.module2InnerContainer, ...moduleStyles[selectedModule].innermost }}></div>
                     </div>
                 </div>
             )}

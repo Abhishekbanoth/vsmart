@@ -1,57 +1,81 @@
 import React, { useState } from 'react';
 import { Link } from "react-router-dom";
 import NavBar from './Navbar';
-import SizeSidebar from './SizeSidebar';
+import SizeSidebar from './SizeSidebar'; // Make sure to customize this with the new dropdown logic
 import AccessoriesSidebar from './AccessoriesSidebar';
 import ColorChanger from './ColorChanger';
 import BorderChanger from './BorderChanger';  
-import IconsSidebar from './IconsSidebar'; // Import IconsSidebar
+import IconsSidebar from './IconsSidebar'; 
 import MaterialSidebar from './MaterialSizebar';
 
 const Home = () => {
     const [hoveredButton, setHoveredButton] = useState(null);
     const [isVisible, setIsVisible] = useState(false);
-    const [showMaterialSidebar,setShowMaterialSidebar]=useState(false)
+    const [showMaterialSidebar,setShowMaterialSidebar]=useState(false);
     const [showSizeSidebar, setShowSizeSidebar] = useState(false);
     const [showAccessoriesSidebar, setShowAccessoriesSidebar] = useState(false);
-    const [showIconsSidebar, setShowIconsSidebar] = useState(false); // New state for IconsSidebar
+    const [showIconsSidebar, setShowIconsSidebar] = useState(false); 
     const [selectedModule, setSelectedModule] = useState(null);
     const [showGlassColors, setShowGlassColors] = useState(false);
-    const [showFrame, setShowFrame] = useState(false);  
+    const [showFrame, setShowFrame] = useState(false);
+
+    // Dynamic styles based on selected module (moved from Size component)
+    const moduleStyles = {
+        module2: {
+            main: { height: '330px', width: '260px' },
+            inner: { height: '180px', width: '200px' },
+        },
+        module4: {
+            main: { height: '360px', width: '500px' },
+            inner: { height: '200px', width: '300px' },
+        },
+        module6: {
+            main: { height: '360px', width: '800px' },
+            inner: { height: '200px', width: '600px' },
+        },
+        module8: {
+            main: { height: '360px', width: '1100px' },
+            inner: { height: '240px', width: '800px' },
+        },
+        module12: {
+            main: { height: '720px', width: '800px' },
+            inner: { height: '200px', width: '600px' },
+        },
+    };
 
     const handleMaterialClick = () => {
         setIsVisible(!isVisible);
-        setShowMaterialSidebar(true)
+        setShowMaterialSidebar(true);
         setShowSizeSidebar(false);
         setShowAccessoriesSidebar(false);
         setShowGlassColors(false);
         setShowFrame(false);
-        setShowIconsSidebar(false); // Hide IconsSidebar
+        setShowIconsSidebar(false);
     };
 
     const handleSizeClick = () => {
-        setShowMaterialSidebar(false)
+        setShowMaterialSidebar(false);
         setShowSizeSidebar(true);
         setIsVisible(false);
         setShowAccessoriesSidebar(false);
         setShowGlassColors(false);
         setShowFrame(false);
-        setShowIconsSidebar(false); // Hide IconsSidebar
+        setShowIconsSidebar(false);
     };
 
     const handleAccessoriesClick = () => {
-        setShowMaterialSidebar(false)
+        setShowMaterialSidebar(false);
         setShowAccessoriesSidebar(true);
         setIsVisible(false);
         setShowSizeSidebar(false);
         setShowGlassColors(false);
         setShowFrame(false);
-        setShowIconsSidebar(false); // Hide IconsSidebar
+        setShowIconsSidebar(false);
     };
 
     const handleIconsClick = () => {
-        setShowMaterialSidebar(false)
-        setShowIconsSidebar(true); // Show IconsSidebar
+        setShowMaterialSidebar(false);
+        setShowIconsSidebar(true);
         setIsVisible(false);
         setShowSizeSidebar(false);
         setShowAccessoriesSidebar(false);
@@ -60,71 +84,41 @@ const Home = () => {
     };
 
     const handleGlassColorClick = () => {
-        setShowMaterialSidebar(false)
+        setShowMaterialSidebar(false);
         setShowGlassColors(!showGlassColors);
         setIsVisible(false);
         setShowSizeSidebar(false);
         setShowAccessoriesSidebar(false);
         setShowFrame(false);
-        setShowIconsSidebar(false); // Hide IconsSidebar
+        setShowIconsSidebar(false);
     };
 
     const handleFrameClick = () => {
-        setShowMaterialSidebar(false)
+        setShowMaterialSidebar(false);
         setShowFrame(true);
         setIsVisible(false);
         setShowSizeSidebar(false);
         setShowAccessoriesSidebar(false);
         setShowGlassColors(false);
-        setShowIconsSidebar(false); // Hide IconsSidebar
+        setShowIconsSidebar(false);
     };
 
     const handleModuleClick = (moduleSize) => {
         setSelectedModule(moduleSize);
     };
 
-    const calculateScreenSize = (module) => {
-        if (!module) return {};
-        const fixedHeight = '200px';
-        let width = `${100 * Math.ceil(module / 2)}px`; 
-        return {
-            width: width,
-            height: fixedHeight,
-            gridTemplateColumns: `repeat(${Math.min(module, 4)}, 1fr)`,
-        };
-    };
-
     const renderModuleBox = () => {
-        if (selectedModule === 12) {
-            return (
-                <>
-                    <div style={{ ...styles.moduleBox, ...calculateScreenSize(6) }}>
-                        {Array.from({ length: 6 }).map((_, index) => (
-                            <div key={index} style={styles.innerBox}>
-                                {`Module ${index + 1}`}
-                            </div>
-                        ))}
-                    </div>
-                    <div style={{ ...styles.moduleBox, ...calculateScreenSize(6) }}>
-                        {Array.from({ length: 6 }).map((_, index) => (
-                            <div key={index + 6} style={styles.innerBox}>
-                                {`Module ${index + 7}`}
-                            </div>
-                        ))}
-                    </div>
-                </>
-            );
-        } else {
-            return (
-                <div id="maindiv" style={{ ...styles.moduleBox, ...calculateScreenSize(selectedModule) }}>
-                    {Array.from({ length: selectedModule }).map((_, index) => (
-                        <div key={index} style={styles.innerBox}>
-                            {`Module ${index + 1}`}
-                        </div>
-                    ))}
+        if (!selectedModule) return null; // If no module is selected, return nothing
+
+        const currentStyles = moduleStyles[selectedModule];
+
+        return (
+            <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh' }}>
+                <div style={{ ...styles.moduleContainer, ...currentStyles.main }}>
+                    <div style={{ ...styles.innerBox, ...currentStyles.inner }}></div>
                 </div>
-            );
-        }
+            </div>
+        );
     };
 
     return (
@@ -134,16 +128,16 @@ const Home = () => {
                 handleSizeClick={handleSizeClick}
                 handleAccessoriesClick={handleAccessoriesClick}
                 handleGlassColorClick={handleGlassColorClick}
-                handleFrameClick={handleFrameClick}  // Pass the new frame handler
-                handleIconsClick={handleIconsClick}  // Pass the new icons handler
+                handleFrameClick={handleFrameClick}
+                handleIconsClick={handleIconsClick}
             />
 
-            {showMaterialSidebar && <MaterialSidebar/>}
+            {showMaterialSidebar && <MaterialSidebar />}
             {showSizeSidebar && <SizeSidebar onModuleClick={handleModuleClick} />}
             {showAccessoriesSidebar && <AccessoriesSidebar />}
             {showGlassColors && <ColorChanger />}
             {showFrame && <BorderChanger />}
-            {showIconsSidebar && <IconsSidebar />} {/* Render IconsSidebar when visible */}
+            {showIconsSidebar && <IconsSidebar />}
 
             <main style={styles.content}>
                 <h1 style={styles.title}>Create Your Own Panel</h1>
@@ -176,10 +170,9 @@ const Home = () => {
                             Color
                         </button>
                     </Link>
-                    
                 </div>
 
-                {/* Ensure renderModuleBox is called here */}
+                {/* Render the module box */}
                 {renderModuleBox()}
             </main>
         </div>
@@ -233,24 +226,23 @@ const styles = {
         boxShadow: "6px 6px 15px rgba(0, 0, 0, 0.2), -6px -6px 15px rgba(255, 255, 255, 0.8)", // More defined shadow on hover
         transform: "translateY(-3px)", // Lift effect on hover
     },
-    moduleBox: {
-        display: 'grid',
-        gap: '10px',
-        backgroundColor: '#000',
-        padding: '20px',
-        borderRadius: '8px',
-        marginTop: '30px',
-        border: '5px solid blue'
+    moduleContainer: {
+        backgroundColor: 'black',
+            boxShadow: '0 0 10px rgba(0, 0, 0, 0.5)',
+            borderRadius: '2px',
+            border: '5px solid rgb(196, 192, 192)',
+            display: 'flex',
+            flexDirection: 'column',
+            justifyContent: 'center',
+            alignItems: 'center',
     },
     innerBox: {
-        backgroundColor: 'black',
-        height: '90%', // Adjust height based on outer box
-        width: '90%', // Adjust width based on outer box
-        margin: 'auto', // Centering the inner box
-        textAlign: 'center',
-        lineHeight: '50px',
-        borderRadius: '5px',
-        border: '2px solid white',
+        border: 'solid 1px rgb(255, 255, 255)',
+            backgroundColor: '#151414',
+            display: 'flex',
+            justifyContent: 'center',
+            alignItems: 'center',
+            margin: '10px 0',
     },
     sidebar: {
         position: 'absolute',

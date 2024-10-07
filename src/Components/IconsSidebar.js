@@ -1,4 +1,5 @@
 import React from 'react';
+import { useDrag } from 'react-dnd';
 import logo from './assets/logo1.png'
 
 import i1 from './assets/i1.png';
@@ -439,6 +440,32 @@ const IconsSidebar = () => {
         { id: 203, src: i203, alt: 'Smoke Detector' },
     ]
 
+    const DraggableIcon = ({ icon }) => {
+        const [{ isDragging }, drag] = useDrag(() => ({
+            type: 'icon',
+            item: { id: icon.id, src: icon.src },
+            collect: (monitor) => ({
+                isDragging: monitor.isDragging(),
+            }),
+        }));
+
+        const opacity = isDragging ? 0.5 : 1;
+
+        return (
+            <div
+                ref={drag}
+                style={{ ...styles.iconItem, opacity }}
+            >
+                <img
+                    src={icon.src}
+                    alt={icon.alt}
+                    style={styles.lightIcon}
+                    onMouseEnter={(e) => (e.currentTarget.style.transform = 'scale(1.1)')}
+                    onMouseLeave={(e) => (e.currentTarget.style.transform = 'scale(1)')}
+                />
+            </div>
+        );
+    };
 
     const styles = {
         logo: {
@@ -514,156 +541,69 @@ const IconsSidebar = () => {
             </div>
             <h2 style={styles.heading}>Decorative Lights</h2>
             <div style={styles.iconsGrid}>
-                {DecorativeIcons.map((icon) => (
-                    <div key={icon.id} style={styles.iconItem}>
-                        <img
-                            src={icon.src}
-                            alt={icon.alt}
-                            style={styles.lightIcon}
-                            onMouseEnter={(e) => (e.currentTarget.style.transform = 'scale(1.1)')}
-                            onMouseLeave={(e) => (e.currentTarget.style.transform = 'scale(1)')}
-                        />
-                    </div>
+                {DecorativeIcons.map(icon => (
+                    <DraggableIcon key={icon.id} icon={icon}  />
                 ))}
+                
             </div>
             <h2 style={styles.heading}>Home Appliances</h2>
             <div style={styles.iconsGrid}>
-                {homeAppliancesIcons.map((icon) => (
-                    <div key={icon.id} style={styles.iconItem}>
-                        <img
-                            src={icon.src}
-                            alt={icon.alt}
-                            style={styles.lightIcon}
-                            onMouseEnter={(e) => (e.currentTarget.style.transform = 'scale(1.1)')}
-                            onMouseLeave={(e) => (e.currentTarget.style.transform = 'scale(1)')}
-                        />
-                    </div>
+            {homeAppliancesIcons.map(icon => (
+                    <DraggableIcon key={icon.id} icon={icon} />
                 ))}
             </div>
             <h2 style={styles.heading}>Scene</h2>
             <div style={styles.iconsGrid}>
-                {sceneIcons.map((icon) => (
-                    <div key={icon.id} style={styles.iconItem}>
-                        <img
-                            src={icon.src}
-                            alt={icon.alt}
-                            style={styles.lightIcon}
-                            onMouseEnter={(e) => (e.currentTarget.style.transform = 'scale(1.1)')}
-                            onMouseLeave={(e) => (e.currentTarget.style.transform = 'scale(1)')}
-                        />
-                    </div>
+            {sceneIcons.map(icon => (
+                    <DraggableIcon key={icon.id} icon={icon} />
                 ))}
             </div>
             <h2 style={styles.heading}>Necessity</h2>
             <div style={styles.iconsGrid}>
-                {necessityIcons.map((icon) => (
-                    <div key={icon.id} style={styles.iconItem}>
-                        <img
-                            src={icon.src}
-                            alt={icon.alt}
-                            style={styles.lightIcon}
-                            onMouseEnter={(e) => (e.currentTarget.style.transform = 'scale(1.1)')}
-                            onMouseLeave={(e) => (e.currentTarget.style.transform = 'scale(1)')}
-                        />
-                    </div>
+            {necessityIcons.map(icon => (
+                    <DraggableIcon key={icon.id} icon={icon} />
                 ))}
             </div>
             <h2 style={styles.heading}>Light</h2>
             <div style={styles.iconsGrid}>
-                {lightIcons.map((icon) => (
-                    <div key={icon.id} style={styles.iconItem}>
-                        <img
-                            src={icon.src}
-                            alt={icon.alt}
-                            style={styles.lightIcon}
-                            onMouseEnter={(e) => (e.currentTarget.style.transform = 'scale(1.1)')}
-                            onMouseLeave={(e) => (e.currentTarget.style.transform = 'scale(1)')}
-                        />
-                    </div>
+            {lightIcons.map(icon => (
+                    <DraggableIcon key={icon.id} icon={icon} />
                 ))}
             </div>
             <h2 style={styles.heading}>COB Lighting</h2>
             <div style={styles.iconsGrid}>
-                {COBIcons.map((icon) => (
-                    <div key={icon.id} style={styles.iconItem}>
-                        <img
-                            src={icon.src}
-                            alt={icon.alt}
-                            style={styles.lightIcon}
-                            onMouseEnter={(e) => (e.currentTarget.style.transform = 'scale(1.1)')}
-                            onMouseLeave={(e) => (e.currentTarget.style.transform = 'scale(1)')}
-                        />
-                    </div>
+            {COBIcons.map(icon => (
+                    <DraggableIcon key={icon.id} icon={icon} />
                 ))}
             </div>
             <h2 style={styles.heading}>Socket</h2>
             <div style={styles.iconsGrid}>
-                {SocketIcons.map((icon) => (
-                    <div key={icon.id} style={styles.iconItem}>
-                        <img
-                            src={icon.src}
-                            alt={icon.alt}
-                            style={styles.lightIcon}
-                            onMouseEnter={(e) => (e.currentTarget.style.transform = 'scale(1.1)')}
-                            onMouseLeave={(e) => (e.currentTarget.style.transform = 'scale(1)')}
-                        />
-                    </div>
+            {SocketIcons.map(icon => (
+                    <DraggableIcon key={icon.id} icon={icon} />
                 ))}
             </div>
             <h2 style={styles.heading}>Fan</h2>
             <div style={styles.iconsGrid}>
-                {FanIcons.map((icon) => (
-                    <div key={icon.id} style={styles.iconItem}>
-                        <img
-                            src={icon.src}
-                            alt={icon.alt}
-                            style={styles.lightIcon}
-                            onMouseEnter={(e) => (e.currentTarget.style.transform = 'scale(1.1)')}
-                            onMouseLeave={(e) => (e.currentTarget.style.transform = 'scale(1)')}
-                        />
-                    </div>
+            {FanIcons.map(icon => (
+                    <DraggableIcon key={icon.id} icon={icon} />
                 ))}
             </div>
             <h2 style={styles.heading}>BLDC Fan</h2>
             <div style={styles.iconsGrid}>
-                {BLDCIcons.map((icon) => (
-                    <div key={icon.id} style={styles.iconItem}>
-                        <img
-                            src={icon.src}
-                            alt={icon.alt}
-                            style={styles.lightIcon}
-                            onMouseEnter={(e) => (e.currentTarget.style.transform = 'scale(1.1)')}
-                            onMouseLeave={(e) => (e.currentTarget.style.transform = 'scale(1)')}
-                        />
-                    </div>
+            {BLDCIcons.map(icon => (
+                    <DraggableIcon key={icon.id} icon={icon} />
                 ))}
             </div>
             <h2 style={styles.heading}>Light Dimmer</h2>
             <div style={styles.iconsGrid}>
-                {LightDimmerIcons.map((icon) => (
-                    <div key={icon.id} style={styles.iconItem}>
-                        <img
-                            src={icon.src}
-                            alt={icon.alt}
-                            style={styles.lightIcon}
-                            onMouseEnter={(e) => (e.currentTarget.style.transform = 'scale(1.1)')}
-                            onMouseLeave={(e) => (e.currentTarget.style.transform = 'scale(1)')}
-                        />
-                    </div>
+            {LightDimmerIcons.map(icon => (
+                    <DraggableIcon key={icon.id} icon={icon} />
                 ))}
             </div>
             <h2 style={styles.heading}>Numbers</h2>
             <div style={styles.iconsGrid}>
-                {NumberIcons.map((icon) => (
-                    <div key={icon.id} style={styles.iconItem}>
-                        <img
-                            src={icon.src}
-                            alt={icon.alt}
-                            style={styles.lightIcon}
-                            onMouseEnter={(e) => (e.currentTarget.style.transform = 'scale(1.1)')}
-                            onMouseLeave={(e) => (e.currentTarget.style.transform = 'scale(1)')}
-                        />
-                    </div>
+            {NumberIcons.map(icon => (
+                    <DraggableIcon key={icon.id} icon={icon} />
                 ))}
             </div>
         </div>
