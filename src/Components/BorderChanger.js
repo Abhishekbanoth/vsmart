@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-const Devara = () => {
+const BorderChanger = () => {
     const [selectedColor, setSelectedColor] = useState("gold"); // default border color
 
     const colors = [
@@ -69,4 +69,4 @@ const Devara = () => {
     );
 };
 
-export default Devara;
+export default BorderChanger;
