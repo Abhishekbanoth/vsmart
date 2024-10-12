@@ -2,15 +2,14 @@ import React from 'react';
 
 const SizeSidebar = ({ onModuleClick }) => {
     return (
-        <div style={styles.sidebar}>
-            <ul style={{ padding: 0, margin: 0 }}> {/* Added ul to wrap the list items */}
-                {[2, 4, 6, 8, 12].map(size => (
-                    <li key={size} style={styles.sidebarItem} onClick={() => onModuleClick(size)}>
-                        {`${size} Module`}
-                    </li>
-                ))}
-            </ul>
-        </div>
+        
+        <div className="sidebar" style={styles.sidebar}>
+                    <div className="sidebar-item" style={styles.sidebarItem} onClick={() => onModuleClick('module2')}>2 Modules</div>
+                    <div className="sidebar-item" style={styles.sidebarItem} onClick={() => onModuleClick('module4')}>4 Modules</div>
+                    <div className="sidebar-item" style={styles.sidebarItem} onClick={() => onModuleClick('module6')}>6 Modules</div>
+                    <div className="sidebar-item" style={styles.sidebarItem} onClick={() => onModuleClick('module8')}>8 Modules</div>
+                    <div className="sidebar-item" style={styles.sidebarItem} onClick={() => onModuleClick('module12')}>12 Modules</div>
+                </div>
     );
 };
 
@@ -34,6 +33,7 @@ const styles = {
         color: '#333',
         borderBottom: '1px solid #e0e0e0',
         cursor: 'pointer',
+        
     },
 };
 
