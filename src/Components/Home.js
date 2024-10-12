@@ -19,6 +19,7 @@ import IconsSidebar from './IconsSidebar';
 import MaterialSidebar from './MaterialSizebar';
 import SizeSidebar from './SizeSidebar';
 import NavBar from './Navbar';
+
 const Size = () => {
     const [isVisible, setIsVisible] = useState(false);
     const [showMaterialSidebar, setShowMaterialSidebar] = useState(false);
@@ -65,6 +66,7 @@ const Size = () => {
         setShowFanImage(false);
         setShowDimmerImage(false);
     };
+
     const handleMaterialClick = () => {
         setIsVisible(!isVisible);
         setShowMaterialSidebar(true);
@@ -74,6 +76,7 @@ const Size = () => {
         setShowFrame(false);
         setShowIconsSidebar(false);
     };
+
     const handleSizeClick = () => {
         setShowMaterialSidebar(false);
         setShowSizeSidebar(true);
@@ -83,6 +86,7 @@ const Size = () => {
         setShowFrame(false);
         setShowIconsSidebar(false);
     };
+
     const handleAccessoriesClick = () => {
         setShowMaterialSidebar(false);
         setShowAccessoriesSidebar(true);
@@ -92,6 +96,7 @@ const Size = () => {
         setShowFrame(false);
         setShowIconsSidebar(false);
     };
+
     const handleIconsClick = () => {
         setShowMaterialSidebar(false);
         setShowIconsSidebar(true);
@@ -101,6 +106,7 @@ const Size = () => {
         setShowGlassColors(false);
         setShowFrame(false);
     };
+
     const handleGlassColorClick = () => {
         setShowMaterialSidebar(false);
         setShowGlassColors(!showGlassColors);
@@ -110,6 +116,7 @@ const Size = () => {
         setShowFrame(false);
         setShowIconsSidebar(false);
     };
+
     const handleFrameClick = () => {
         setShowMaterialSidebar(false);
         setShowFrame(true);
@@ -119,6 +126,7 @@ const Size = () => {
         setShowGlassColors(false);
         setShowIconsSidebar(false);
     };
+
     const changeBackgroundColor = (color) => {
         setBackgroundColor(color);
     };
@@ -126,11 +134,14 @@ const Size = () => {
     const changeBorderColor = (color) => {
         setBorderColor(color);
     };
+
     const handleAccessoryClick = (item) => {
         let maxAllowedPairs = moduleLimits[selectedModule];
         let totalPairsAdded = addedItems.length;
         setSelecteditem(item);
+
         switch (item) {
+
             case 'Ethernet Port':
                 if (totalPairsAdded < maxAllowedPairs) {
                     setShowEthernetImage(true);
@@ -139,6 +150,7 @@ const Size = () => {
                     alert(`You can only add ${maxAllowedPairs} pair(s) for ${selectedModule}.`);
                 }
                 break;
+
             case 'Telephone Port':
                 if (totalPairsAdded < maxAllowedPairs) {
                     setShowTelImage(true);
@@ -147,6 +159,7 @@ const Size = () => {
                     alert(`You can only add ${maxAllowedPairs} pair(s) for ${selectedModule}.`);
                 }
                 break;
+
             case 'TV Port':
                 if (totalPairsAdded < maxAllowedPairs) {
                     setShowLaptopImage(true);
@@ -155,6 +168,7 @@ const Size = () => {
                     alert(`You can only add ${maxAllowedPairs} pair(s) for ${selectedModule}.`);
                 }
                 break;
+
             case 'Bell':
                 if (totalPairsAdded < maxAllowedPairs) {
                     setShowBellImage(true);
@@ -162,6 +176,7 @@ const Size = () => {
                 } else {
                     alert(`You can only add ${maxAllowedPairs} pair(s) for ${selectedModule}.`);
                 } break;
+
             case 'Curtain':
                 if (totalPairsAdded < maxAllowedPairs) {
                     setShowCurtainImage(true);
@@ -170,6 +185,7 @@ const Size = () => {
                     alert(`You can only add ${maxAllowedPairs} pair(s) for ${selectedModule}.`);
                 }
                 break;
+
             case '3 Pin Socket':
                 if (totalPairsAdded < maxAllowedPairs) {
                     setShowPIN3Image(true);
@@ -178,6 +194,7 @@ const Size = () => {
                     alert(`You can only add ${maxAllowedPairs} pair(s) for ${selectedModule}.`);
                 }
                 break;
+
             case '6 Amp Socket':
                 if (totalPairsAdded < maxAllowedPairs) {
                     setShowAMP6Image(true);
@@ -186,6 +203,7 @@ const Size = () => {
                     alert(`You can only add ${maxAllowedPairs} pair(s) for ${selectedModule}.`);
                 }
                 break;
+
             case '16 Amp Socket':
                 if (totalPairsAdded < maxAllowedPairs) {
                     setShowAMP16Image(true);
@@ -194,6 +212,7 @@ const Size = () => {
                     alert(`You can only add ${maxAllowedPairs} pair(s) for ${selectedModule}.`);
                 }
                 break;
+
             case '2 Switch':
             case '2 Switch(1-16A)':
             case '2 Switch(1-2way)':
@@ -207,6 +226,7 @@ const Size = () => {
                 } else {
                     alert(`You can only add ${maxAllowedPairs} pair(s) for ${selectedModule}.`);
                 } break;
+
             case '4 Switch':
                 if (totalPairsAdded + 2 <= maxAllowedPairs) {
                     setAddedItems((prevItems) => [...prevItems, ...Array(2).fill(item)]); // Add 2 pairs
@@ -214,6 +234,7 @@ const Size = () => {
                     alert(`You can only add ${maxAllowedPairs} pair(s) for ${selectedModule}.`);
                 }
                 break;
+
             case '4 Scene Controller': // New case for 4 Scene Controller
                 if (totalPairsAdded + 2 <= maxAllowedPairs) {
                     setAddedItems((prevItems) => [...prevItems, ...Array(2).fill(item)]); // Add 2 pairs
@@ -221,6 +242,7 @@ const Size = () => {
                     alert(`You can only add ${maxAllowedPairs} pair(s) for ${selectedModule}.`);
                 }
                 break;
+
             case '6 Switch':
                 if (totalPairsAdded + 3 <= maxAllowedPairs) {
                     setAddedItems((prevItems) => [...prevItems, ...Array(3).fill(item)]); // Add 3 pairs
@@ -228,6 +250,7 @@ const Size = () => {
                     alert(`You can only add ${maxAllowedPairs} pair(s) for ${selectedModule}.`);
                 }
                 break;
+
             case '8 Switch':
                 if (totalPairsAdded + 4 <= maxAllowedPairs) {
                     setAddedItems((prevItems) => [...prevItems, ...Array(4).fill(item)]); // Add 4 pairs
@@ -235,6 +258,7 @@ const Size = () => {
                     alert(`You can only add ${maxAllowedPairs} pair(s) for ${selectedModule}.`);
                 }
                 break;
+
             case '10 Switch':
                 if (totalPairsAdded + 5 <= maxAllowedPairs) {
                     setAddedItems((prevItems) => [...prevItems, ...Array(5).fill(item)]); // Add 5 pairs
@@ -242,6 +266,7 @@ const Size = () => {
                     alert(`You can only add ${maxAllowedPairs} pair(s) for ${selectedModule}.`);
                 }
                 break;
+
             case '4 Switch + 1 Fan':
                 maxAllowedPairs = maxAllowedPairs + 1
                 if (totalPairsAdded + 5 <= maxAllowedPairs + 1) {
@@ -253,6 +278,7 @@ const Size = () => {
                     alert(`You can only add ${maxAllowedPairs} pair(s) for ${selectedModule}.`);
                 }
                 break;
+
             case '4 Switch + 2 Fan':
                 if (totalPairsAdded + 4 <= maxAllowedPairs) {
                     setShowFanImage(true);
@@ -264,6 +290,7 @@ const Size = () => {
                 } else {
                     alert(`You can only add ${maxAllowedPairs} pair(s) for ${selectedModule}.`);
                 } break;
+
             case '6 Switch + 1 Fan':
                 maxAllowedPairs = maxAllowedPairs + 1
                 if (totalPairsAdded + 5 <= maxAllowedPairs) {
@@ -275,6 +302,7 @@ const Size = () => {
                     alert(`You can only add ${maxAllowedPairs} pair(s) for ${selectedModule}.`);
                 }
                 break;
+
             case '6 Switch + 2 Fan':
                 if (totalPairsAdded + 5 <= maxAllowedPairs) {
                     setShowFanImage(true);
@@ -287,10 +315,12 @@ const Size = () => {
                     alert(`You can only add ${maxAllowedPairs} pair(s) for ${selectedModule}.`);
                 }
                 break;
+
             default:
                 alert(`This accessory is not available for ${selectedModule}`);
         }
     };
+
     const moduleStyles = {
         module2: {
             main: { height: '41vh', width: '23vw' },
@@ -314,6 +344,7 @@ const Size = () => {
             innermost: { height: '146px', width: '452px', marginTop: '10px' },
         },
     };
+
     const handleDeleteItem = (index) => {
         const itemToRemove = addedItems[index];
         switch (itemToRemove) {
@@ -356,6 +387,7 @@ const Size = () => {
             return newItems;
         });
     };
+
     const renderAccessoryImage = (imageSrc, altText, visibility, style, index) => {
         if (!visibility) return null;
         const itemIndex = addedItems.indexOf(altText); return (
@@ -375,7 +407,9 @@ const Size = () => {
                     onClick={() => handleDeleteItem(itemIndex)}
                     style={{
                         position: 'absolute', height: '18px', width: '18px', borderTopRadius: '2px', marginTop: '127px', marginLeft: '35px', zIndex: '1'
-                    }} /></div>);
+                    }} />
+            </div>
+        );
     };
     const handleDelete = (index) => {
         setDroppedIcons((prev) => {
@@ -384,11 +418,13 @@ const Size = () => {
             return newDroppedIcons;
         });
     };
+
     const DimmerDropArea = ({ index, currentImage, onDrop, onDelete, altText }) => {
         const [, drop] = useDrop(() => ({
             accept: 'icon',
             drop: (item) => onDrop(item, index),
         }));
+
         const dropAreaStyles = {
             width: '40px',
             height: currentImage ? '40px' : '150px',
@@ -397,6 +433,7 @@ const Size = () => {
             justifyContent: 'center',
             alignItems: 'flex-end',
         };
+
         return (
             <div ref={drop} style={{
                 width: '30px',
@@ -416,7 +453,7 @@ const Size = () => {
                         <img
                             src={deleteIcon}
                             alt="Delete Icon"
-                            onClick={onDelete}  // Delete action when clicked
+                            onClick={onDelete}
                             style={{
                                 position: 'relative',
                                 top: '-55px',
@@ -438,6 +475,7 @@ const Size = () => {
             </div>
         );
     };
+
     const handleDimmerDrop = (item, index) => {
         setDroppedDimmerIcons((prevIcons) => {
             const newIcons = [...prevIcons];
@@ -445,6 +483,7 @@ const Size = () => {
             return newIcons;
         });
     };
+
     const handleDimmerDelete = (index) => {
         setDroppedDimmerIcons((prevIcons) => {
             const newIcons = [...prevIcons];
@@ -453,6 +492,7 @@ const Size = () => {
         });
         setShowDimmerImage(true);
     };
+
     const handleFanDrop = (item, index) => {
         setDroppedFanIcons((prevIcons) => {
             const newIcons = [...prevIcons];
@@ -460,6 +500,7 @@ const Size = () => {
             return newIcons;
         });
     };
+
     const handleFanDelete = (index) => {
         setDroppedFanIcons((prevIcons) => {
             const newIcons = [...prevIcons];
@@ -468,11 +509,13 @@ const Size = () => {
         });
         setShowFanImage(true);
     };
+
     const FanDropArea = ({ index, currentImage, onDrop, onDelete, altText }) => {
         const [, drop] = useDrop(() => ({
             accept: 'icon',
             drop: (item) => onDrop(item, index),
         }));
+
         return (
             <div ref={drop} style={{
                 width: '30px',
@@ -514,6 +557,7 @@ const Size = () => {
             </div>
         );
     };
+
     const CircleDropArea = ({ index, onDelete }) => {
         const isDropped = !!droppedIcons[index];
         const [, drop] = useDrop(() => ({
@@ -523,6 +567,7 @@ const Size = () => {
                 isOver: monitor.isOver(),
             }),
         }));
+
         return (
             <div ref={drop} style={{
                 width: '30px',
@@ -552,6 +597,7 @@ const Size = () => {
             </div>
         );
     };
+
     const handleDrop = (item, index) => {
         setDroppedIcons((prev) => {
             const newDroppedIcons = [...prev];
@@ -559,6 +605,17 @@ const Size = () => {
             return newDroppedIcons;
         });
     };
+
+    const handleDownload = () => {
+        console.log('Download button clicked');
+        const printableContent = document.getElementById('printable-area').innerHTML;
+        const originalContent = document.body.innerHTML;
+
+        document.body.innerHTML = printableContent;
+        window.print();
+        document.body.innerHTML = originalContent;
+    };
+
     return (
         <div>
             <NavBar
@@ -569,14 +626,16 @@ const Size = () => {
                 handleFrameClick={handleFrameClick}
                 handleIconsClick={handleIconsClick}
             />
+
             {showMaterialSidebar && <MaterialSidebar />}
             {showSizeSidebar && <SizeSidebar onModuleClick={handleModuleClick} />}
             {showAccessoriesSidebar && <AccessoriesSidebar onItemClick={handleAccessoryClick} />}
             {showGlassColors && <ColorChanger changeBackgroundColor={changeBackgroundColor} />}
             {showFrame && <BorderChanger changeBorderColor={changeBorderColor} />}
             {showIconsSidebar && <IconsSidebar />}
+
             {selectedModule && (
-                <div className="module2-container">
+                <div id="printable-area" className="module2-container">
                     <div className="module2-maincontainer" style={{ ...moduleStyles[selectedModule].main, backgroundColor, borderColor }}>
                         <div className="module2-innercontainer" style={{ ...moduleStyles[selectedModule].inner, backgroundColor }}>
                             <div
@@ -587,58 +646,73 @@ const Size = () => {
                                     justifyContent: 'center',
                                     gap: '6px',
                                 }}>
+
                                 {renderAccessoryImage(bellImage, "Bell", showBellImage, {
                                     width: '60px', height: '60px', marginTop: '40px'
                                 }, addedItems.indexOf('Bell'))}
+
                                 {renderAccessoryImage(CurtainImg, "Curtain", showCurtainImage, {
                                     width: '30px', height: '80px', marginTop: '35px',
                                 }, addedItems.indexOf('Curtain'))}
+
                                 {renderAccessoryImage(Pin3Socketimg, "3 Pin Socket", showPIN3Image, {
                                     width: '80px', height: '100px', marginTop: '25px',
-                                }, addedItems.indexOf('3 Pin Socket'))} {/* Example style for Bell */}
+                                }, addedItems.indexOf('3 Pin Socket'))}
+
                                 {renderAccessoryImage(AMP16Socketimg, "16 Amp Socket", showAMP16Image, {
                                     width: '80px', height: '100px', marginTop: '25px',
                                 }, addedItems.indexOf('16 Amp Socket'))}
+
                                 {renderAccessoryImage(AMP6Socketimg, "6 Amp Socket", showAMP6Image, {
                                     width: '80px', height: '100px', marginTop: '25px',
                                 }, addedItems.indexOf('6 Amp Socket'))}
+
                                 {renderAccessoryImage(Ethernetimg, "Ethernet Port", showEthernetImage, {
                                     width: '60px', height: '120px', marginTop: '15px',
-                                }, addedItems.indexOf('Ethernet Port'))} {/* Example style for Bell */}
+                                }, addedItems.indexOf('Ethernet Port'))}
+
                                 {renderAccessoryImage(Telimg, "Telephone Port", showTelImage, {
                                     width: '60px', height: '115px', marginTop: '15px',
                                 }, addedItems.indexOf('Telephone Port'))}
+
                                 {renderAccessoryImage(Laptopimg, "TV Port", showLaptopImage, {
                                     width: '60px', height: '100px', marginTop: '25px',
                                 }, addedItems.indexOf('TV Port'))}
-                                {selecteditem.includes('2 Fan') && (<>
-                                    {showDimmerImage && (
-                                        <DimmerDropArea
-                                            index={0}
-                                            currentImage={droppedDimmerIcons[0]}
-                                            onDrop={handleDimmerDrop}
-                                            onDelete={() => handleDimmerDelete(0)}
-                                        />
-                                    )}
-                                    {showFanImage && (
-                                        <FanDropArea
-                                            index={0}
-                                            currentImage={droppedFanIcons[0]}
-                                            onDrop={handleFanDrop}
-                                            onDelete={() => handleFanDelete(0)}
-                                        />
-                                    )}
-                                </>
+
+                                {selecteditem.includes('2 Fan') && (
+                                    <>
+                                        {showDimmerImage && (
+                                            <DimmerDropArea
+                                                index={0}
+                                                currentImage={droppedDimmerIcons[0]}
+                                                onDrop={handleDimmerDrop}
+                                                onDelete={() => handleDimmerDelete(0)}
+                                            />
+                                        )}
+                                        {showFanImage && (
+                                            <FanDropArea
+                                                index={0}
+                                                currentImage={droppedFanIcons[0]}
+                                                onDrop={handleFanDrop}
+                                                onDelete={() => handleFanDelete(0)}
+                                            />
+                                        )}
+                                    </>
                                 )}
                                 {addedItems.filter(item => item !== 'Bell' && item !== 'Curtain' && item !== '3 Pin Socket' && item !== '16 Amp Socket' && item !== '6 Amp Socket' && item !== 'Ethernet Port' && item !== 'Telephone Port' && item !== 'TV Port')
                                     .slice(0, moduleLimits[selectedModule] * 2).map((item, index) => (
-                                        <><div
-                                            className="circle-pair"
-                                            key={index}
-                                            style={{ margin: '5px 0px', zIndex: '1', }}>
-                                            <div style={{ marginBottom: '30px' }}><CircleDropArea index={index} onDelete={() => handleDelete(index)} /></div>
-                                            <CircleDropArea index={index + 15} onDelete={() => handleDelete(index + 15)} />
-                                        </div>
+                                        <>
+                                            <div
+                                                className="circle-pair"
+                                                key={index}
+                                                style={{ margin: '5px 0px', zIndex: '1', }}
+                                            >
+                                                <div style={{ marginBottom: '30px' }}>
+                                                    <CircleDropArea index={index} onDelete={() => handleDelete(index)} />
+                                                </div>
+                                                <CircleDropArea index={index + 15} onDelete={() => handleDelete(index + 15)} />
+
+                                            </div>
                                             <div className="delete-icon-container" style={{ position: 'relative' }}>
                                                 <img
                                                     src={deleteIcon}
@@ -663,7 +737,9 @@ const Size = () => {
                                         onDelete={() => handleDimmerDelete(1)}
                                     />
                                 )}
-                            </div></div>
+                            </div>
+                        </div>
+
                         {selectedModule === 'module12' && (
                             <div className="module2-innercontainer" style={moduleStyles[selectedModule].innermost}>
                                 <div
@@ -676,12 +752,14 @@ const Size = () => {
                                         marginLeft: '40px',
                                     }}>
                                     {addedItems.slice(moduleLimits[selectedModule] * 2).map((item, index) => (
-                                        <><div
-                                            className="circle-pair"
-                                            key={index}
-                                            style={{ margin: '70px 27px', }}>
-                                            <div className="circle" ></div>
-                                            <div className="circle"></div></div>
+                                        <>
+                                            <div
+                                                className="circle-pair"
+                                                key={index}
+                                                style={{ margin: '70px 27px', }}>
+                                                <div className="circle" ></div>
+                                                <div className="circle"></div>
+                                            </div>
                                             <div className="delete-icon-container " style={{ position: 'relative', }}>
                                                 <img
                                                     src={deleteIcon}
@@ -691,6 +769,69 @@ const Size = () => {
                                                     onClick={() => handleDeleteItem(index)}
                                                     style={{ height: '18px', width: '18px', borderTopRadius: '2px', marginTop: '128px', position: 'absolute' }}
                                                 />
-                                            </div></>))}</div></div>)}</div></div>)}</div>);
+                                            </div>
+                                        </>
+                                    ))}
+                                </div>
+                            </div>
+                        )}
+                    </div>
+                    <div className="printable-content">
+                        <table border="1" style={{ marginTop: '5px ', marginLeft: '250px', borderCollapse: 'collapse' }}>
+                            <tbody>
+                                <tr>
+                                    <td>Panel</td>
+                                    <td>Edge</td>
+                                </tr>
+                                <tr>
+                                    <td>Material</td>
+                                    <td>Glass</td>
+                                </tr>
+                                <tr>
+                                    <td>Module</td>
+                                    <td>8</td>
+                                </tr>
+                                <tr>
+                                    <td>Frame</td>
+                                    <td>Rosegold</td>
+                                </tr>
+                                <tr>
+                                    <td>Quantity</td>
+                                    <td>1</td>
+                                </tr>
+                                <tr>
+                                    <td>Glass Color</td>
+                                    <td>RoyalBlue</td>
+                                </tr>
+                                <tr>
+                                    <td>Accessories-4</td>
+                                    <td>6 Switch + 2 Fan</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>)}
+            <button style={{
+                display: 'flex',
+                position: 'fixed',
+                right: '20px',
+                bottom: '20px',
+                textAlign: 'center',
+                textDecoration: 'none',
+                fontSize: '16px',
+                margin: ' 8px 2px',
+                cursor: 'pointer',
+                borderRadius: '5px',
+                letterSpacing: '1px',
+                fontWeight: '600',
+                outline: 'none',
+                border: 'none',
+                padding: ' 8px 20px',
+                background: '#ce2b65',
+                color: '#fff',
+            }}
+                onClick={handleDownload}>Download</button>
+        </div>
+    );
 };
 export default Size;
